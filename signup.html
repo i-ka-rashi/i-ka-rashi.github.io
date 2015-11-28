@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SignUp</title>
+</head>
+<body>
+<div class="pg-signup">
+<form id="jsi-form"></form>
+	<div>
+		<label for="jsi-name">user name</label>
+		<input type="text" id="jsi-name" class="validate[required]" />
+	</div>
+	<div>
+		<label for="jsi-pwd">password</label>
+		<input type="password" id="jsi-pwd" class="validate[required]" />
+	</div>
+	<div>
+		<label for="jsi-confirm-pwd">confirm password</label>
+		<input type="password" id="jsi-confirm-pwd" class="validate[required]" />
+	</div>
+	<input type="button" value="SignUp" onclick="signUp()"/>
+</div>
+
+<script type="text/javascript" src="https://cdn.mlkcca.com/v2.0.0/milkcocoa.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var milkcocoa = new MilkCocoa('dogigwdngmz.mlkcca.com');
+
+function signUp(){
+	var name = $("#jsi-name").val();
+	var pwd = $("#jsi-pwd").val();
+	var confirmPwd = $("#jsi-confirm-pwd").val();
+	if (name != "" || pwd != "" || confirmPwd != "") {
+		if (pwd == confirmPwd) {
+			milkcocoa.addAccount(name,pwd,null,function(err,user){
+	            if(err == null){
+	                alert(user.email + 'のユーザ登録が完了しました');
+	            }
+			});
+			setTimeout(function(){
+		      window.location.href = 'index.html';
+		    }, 3000); 
+		}
+	} else {
+		
+	}
+}
+</script>
+</body>
+</html>
